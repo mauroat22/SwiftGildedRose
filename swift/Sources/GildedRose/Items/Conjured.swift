@@ -7,9 +7,22 @@
 
 import Foundation
 
-struct Conjured: QualityUpdatable {
-    var item: Item
+/// An `Item`  that decreases its quality twice as fast as a normal item.
+///
+class Conjured: Item, Updatable {
 
-    func updateQuality() {
+    func update() {
+        reduceSellIn()
+
+        reduceRange.forEach { _ in
+            reduceQuality()
+        }
+    }
+
+    private var reduceRange: ClosedRange<Int> {
+        if isExpired {
+            return 1...4
+        }
+        return 1...2
     }
 }

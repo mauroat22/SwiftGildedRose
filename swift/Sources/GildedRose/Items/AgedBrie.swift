@@ -7,10 +7,11 @@
 
 import Foundation
 
-struct AgedBrie: QualityUpdatable {    
-    var item: Item
-
-    func updateQuality() {
-
+/// An `Item` that increases in quality as it `sellIn` approaches.
+///
+class AgedBrie: Item, Updatable {
+    func update() {
+        reduceSellIn()
+        increaseQuality()
     }
 }

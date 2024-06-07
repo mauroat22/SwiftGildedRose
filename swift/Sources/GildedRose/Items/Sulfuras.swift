@@ -7,9 +7,7 @@
 
 import Foundation
 
-struct Sulfuras: QualityUpdatable {
-    var item: Item
-
-    func updateQuality() {
-    }
+/// Legendary `Item`, never modifies its `sellIn` nor its `quality`
+///
+class Sulfuras: Item {
 }
