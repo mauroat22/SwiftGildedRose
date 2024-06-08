@@ -7,10 +7,24 @@
 
 import Foundation
 
-struct AgedBrie: QualityUpdatable {    
-    var item: Item
+/// An `Item` that increases in quality as it `sellIn` approaches.
+///
+class AgedBrie: ItemProtocol, Updatable {
 
-    func updateQuality() {
+    init(name: String, sellIn: Int, quality: Int) {
+        self.name = name
+        self.sellIn = sellIn
+        self.quality = quality
+    }
 
+    var name: String
+    var sellIn: Int
+    var quality: Int
+
+    func update() {
+        sellIn -= 1
+        if canIncreaseQuality {
+            quality += 1
+        }
     }
 }
