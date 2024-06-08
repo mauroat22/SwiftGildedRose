@@ -7,9 +7,9 @@
 
 import Foundation
 
-/// Use this protocol to conform the properties of one `Item`.
+/// Use this protocol to conform the properties of an `Item`.
 ///
-protocol ItemProtocol {
+public protocol ItemProtocol {
     var name: String { get set }
     var sellIn: Int { get set }
     var quality: Int { get set }
