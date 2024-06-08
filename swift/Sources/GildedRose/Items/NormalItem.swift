@@ -9,7 +9,7 @@ import Foundation
 
 /// An `Item` that decreases its quality twice as fast, if the sell by date has passed.
 ///
-class NormalItem: ItemProtocol {
+class NormalItem: ItemProtocol, Updatable {
 
     struct Const {
         static let expiredReductionRange = Self.notExpiredReductionRange * 2
@@ -25,9 +25,7 @@ class NormalItem: ItemProtocol {
     var name: String
     var sellIn: Int
     var quality: Int
-}
 
-extension ItemProtocol where Self == NormalItem {
     private var reductionRange: Int {
         isExpired ? NormalItem.Const.expiredReductionRange : NormalItem.Const.notExpiredReductionRange
     }

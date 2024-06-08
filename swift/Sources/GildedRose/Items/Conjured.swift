@@ -9,7 +9,7 @@ import Foundation
 
 /// An `Item`  that decreases its quality twice as fast as a normal item.
 ///
-class Conjured: ItemProtocol {
+class Conjured: ItemProtocol, Updatable {
 
     struct Const {
         static let expiredReductionRange = Self.notExpiredReductionRange * 2
@@ -25,9 +25,7 @@ class Conjured: ItemProtocol {
     var name: String
     var sellIn: Int
     var quality: Int
-}
 
-extension ItemProtocol where Self == Conjured {
     private var reductionRange: Int {
         isExpired ? Conjured.Const.expiredReductionRange : Conjured.Const.notExpiredReductionRange
     }

@@ -9,7 +9,7 @@ import Foundation
 
 /// An `Item` that increases in quality as it `sellIn` approaches..
 ///
-class BackstagePasses: ItemProtocol {
+class BackstagePasses: ItemProtocol, Updatable {
 
     struct Const {
         static let maxDaysToSell = 10
@@ -31,10 +31,6 @@ class BackstagePasses: ItemProtocol {
     var name: String
     var sellIn: Int
     var quality: Int
-}
-
-
-extension ItemProtocol where Self == BackstagePasses {
 
     private var additionRange: Int {
         if sellIn <= BackstagePasses.Const.minDaysToSell {
