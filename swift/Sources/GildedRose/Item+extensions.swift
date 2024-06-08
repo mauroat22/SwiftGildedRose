@@ -7,38 +7,30 @@
 
 import Foundation
 
-/// Extending `Item` could be possible(?), as isnt clear,I used `Updatable` instead.
-extension Item {
+/// Use this extension for adding or decoring `Item` as our rules dictate that Item must not be altered.
+/// If this rule changes in the future, consider moving to a polymorphic solution using the `Strategy` pattern, creating a `Quality` object within `Item`.
+protocol ItemProtocol {
+    var name: String { get set }
+    var sellIn: Int { get set }
+    var quality: Int { get set }
+}
 
+extension Item: ItemProtocol { }
+
+extension ItemProtocol {
     // According to the AC: "The Quality of an item is never negative" and "is never more than 50"
-    private var canReduceQuality: Bool {
+    var canReduceQuality: Bool {
         let reductableRange: ClosedRange<Int> = 1...50
         return  reductableRange.contains(quality)
     }
 
-    private var canIncreaseQuality: Bool {
+    var canIncreaseQuality: Bool {
         let sumRange: ClosedRange<Int> = 0...49
         return  sumRange.contains(quality)
     }
 
     var isExpired: Bool {
         sellIn < 0
-    }
-
-    func reduceQuality() {
-        if canReduceQuality {
-            quality -= 1
-        }
-    }
-
-    func increaseQuality() {
-        if canIncreaseQuality {
-            quality += 1
-        }
-    }
-
-    func reduceSellIn() {
-        sellIn -= 1
     }
 }
 

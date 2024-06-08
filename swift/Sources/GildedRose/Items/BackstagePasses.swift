@@ -9,31 +9,53 @@ import Foundation
 
 /// An `Item` that increases in quality as it `sellIn` approaches..
 ///
-class BackstagePasses: Item, Updatable {
+class BackstagePasses: ItemProtocol {
 
-    //Quality increases by 2 when there are 10 days or less and by 3 when there are 5 days or less but
-    //Quality drops to 0 after the concert
-    func update() {
-        reduceSellIn()
+    struct Const {
+        static let maxDaysToSell = 10
+        static let minDaysToSell = 5
 
-        repetitionRange.forEach { _ in
-            increaseQuality()
-        }
+        static let maxAdditionRange = 3
+        static let mediumAdditionRange = 2
+        static let minAdditionRange = 1
+
+        static let zero = 0
     }
+    
+    init(name: String, sellIn: Int, quality: Int) {
+        self.name = name
+        self.sellIn = sellIn
+        self.quality = quality
+    }
+    
+    var name: String
+    var sellIn: Int
+    var quality: Int
 }
 
-//TODO: Check implementation, the logic is not as this one.
-extension BackstagePasses {
-    var repetitionRange: ClosedRange<Int> {
-        if sellIn > 5 && sellIn <= 10 {
-            return 1...2
-        } else if sellIn <= 5 {
-            return 1...3
-        } else if sellIn <= 0 {
-            return 1...1
-        }
 
-        return 1...1
+extension ItemProtocol where Self == BackstagePasses {
+
+    private var additionRange: Int {
+        if sellIn <= BackstagePasses.Const.minDaysToSell {
+            return BackstagePasses.Const.maxAdditionRange
+        } else if sellIn <= BackstagePasses.Const.maxDaysToSell {
+            return BackstagePasses.Const.mediumAdditionRange
+        } else if sellIn <= BackstagePasses.Const.zero {
+            return BackstagePasses.Const.zero
+        } else {
+            return BackstagePasses.Const.minAdditionRange
+        }
     }
 
+    func update() {
+        sellIn -= 1
+        func update() {
+            sellIn -= 1
+            for _ in 0...additionRange {
+                guard canIncreaseQuality else { break }
+                quality += 1
+            }
+        }
+    }
 }

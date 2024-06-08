@@ -9,5 +9,15 @@ import Foundation
 
 /// Legendary `Item`, never modifies its `sellIn` nor its `quality`
 ///
-class Sulfuras: Item {
+class Sulfuras: ItemProtocol {
+
+    init(name: String, sellIn: Int, quality: Int) {
+        self.name = name
+        self.sellIn = sellIn
+        self.quality = quality
+    }
+    
+    var name: String
+    var sellIn: Int
+    var quality: Int
 }

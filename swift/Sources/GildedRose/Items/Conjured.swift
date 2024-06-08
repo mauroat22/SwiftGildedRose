@@ -9,20 +9,34 @@ import Foundation
 
 /// An `Item`  that decreases its quality twice as fast as a normal item.
 ///
-class Conjured: Item, Updatable {
+class Conjured: ItemProtocol {
 
-    func update() {
-        reduceSellIn()
-
-        reduceRange.forEach { _ in
-            reduceQuality()
-        }
+    struct Const {
+        static let expiredReductionRange = Self.notExpiredReductionRange * 2
+        static let notExpiredReductionRange = 2
     }
 
-    private var reduceRange: ClosedRange<Int> {
-        if isExpired {
-            return 1...4
+    init(name: String, sellIn: Int, quality: Int) {
+        self.name = name
+        self.sellIn = sellIn
+        self.quality = quality
+    }
+    
+    var name: String
+    var sellIn: Int
+    var quality: Int
+}
+
+extension ItemProtocol where Self == Conjured {
+    private var reductionRange: Int {
+        isExpired ? Conjured.Const.expiredReductionRange : Conjured.Const.notExpiredReductionRange
+    }
+
+    func update() {
+        sellIn -= 1
+        for _ in 0...reductionRange {
+            guard canReduceQuality else { break }
+            quality -= 1
         }
-        return 1...2
     }
 }
