@@ -7,8 +7,8 @@
 
 import Foundation
 
-/// Use this extension for adding or decoring `Item` as our rules dictate that Item must not be altered.
-/// If this rule changes in the future, consider moving to a polymorphic solution using the `Strategy` pattern, creating a `Quality` object within `Item`.
+/// Use this protocol to conform the properties of one `Item`.
+///
 protocol ItemProtocol {
     var name: String { get set }
     var sellIn: Int { get set }

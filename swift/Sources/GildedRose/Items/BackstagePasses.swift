@@ -1,6 +1,6 @@
 //
 //  BackstagePasses.swift
-//  
+//
 //
 //  Created by Mauro Bianchelli on 2024-06-06.
 //
@@ -21,13 +21,13 @@ class BackstagePasses: ItemProtocol, Updatable {
 
         static let zero = 0
     }
-    
+
     init(name: String, sellIn: Int, quality: Int) {
         self.name = name
         self.sellIn = sellIn
         self.quality = quality
     }
-    
+
     var name: String
     var sellIn: Int
     var quality: Int
@@ -46,12 +46,9 @@ class BackstagePasses: ItemProtocol, Updatable {
 
     func update() {
         sellIn -= 1
-        func update() {
-            sellIn -= 1
-            for _ in 0...additionRange {
-                guard canIncreaseQuality else { break }
-                quality += 1
-            }
+        for _ in 0...additionRange {
+            guard canIncreaseQuality else { break }
+            quality += 1
         }
     }
 }
