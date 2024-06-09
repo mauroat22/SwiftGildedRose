@@ -19,12 +19,16 @@ class NormalItem: ItemProtocol, Updatable {
     init(name: String, sellIn: Int, quality: Int) {
         self.name = name
         self.sellIn = sellIn
-        self.quality = quality
+        self.quality = quality.qualityBoundsChecked
     }
 
     var name: String
     var sellIn: Int
-    var quality: Int
+    var quality: Int {
+        didSet {
+            quality = quality.qualityBoundsChecked
+        }
+    }
 
     private var reductionRange: Int {
         isExpired ? NormalItem.Const.expiredReductionRange : NormalItem.Const.notExpiredReductionRange
@@ -32,7 +36,7 @@ class NormalItem: ItemProtocol, Updatable {
 
     func update() {
         sellIn -= 1
-        for _ in 0...reductionRange {
+        for _ in 1...reductionRange {
             guard canReduceQuality else { break }
             quality -= 1
         }

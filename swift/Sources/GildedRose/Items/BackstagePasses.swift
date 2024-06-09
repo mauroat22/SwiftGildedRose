@@ -25,12 +25,16 @@ class BackstagePasses: ItemProtocol, Updatable {
     init(name: String, sellIn: Int, quality: Int) {
         self.name = name
         self.sellIn = sellIn
-        self.quality = quality
+        self.quality = quality.qualityBoundsChecked
     }
 
     var name: String
     var sellIn: Int
-    var quality: Int
+    var quality: Int {
+        didSet {
+            quality = quality.qualityBoundsChecked
+        }
+    }
 
     private var additionRange: Int {
         if sellIn <= BackstagePasses.Const.minDaysToSell {
@@ -46,7 +50,7 @@ class BackstagePasses: ItemProtocol, Updatable {
 
     func update() {
         sellIn -= 1
-        for _ in 0...additionRange {
+        for _ in 1...additionRange {
             guard canIncreaseQuality else { break }
             quality += 1
         }

@@ -14,12 +14,16 @@ class AgedBrie: ItemProtocol, Updatable {
     init(name: String, sellIn: Int, quality: Int) {
         self.name = name
         self.sellIn = sellIn
-        self.quality = quality
+        self.quality = quality.qualityBoundsChecked
     }
 
     var name: String
     var sellIn: Int
-    var quality: Int
+    var quality: Int {
+        didSet {
+            quality = quality.qualityBoundsChecked
+        }
+    }
 
     func update() {
         sellIn -= 1

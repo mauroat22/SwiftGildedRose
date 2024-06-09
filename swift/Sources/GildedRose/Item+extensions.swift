@@ -1,6 +1,6 @@
 //
 //  Item+extensions.swift
-//  
+//
 //
 //  Created by Mauro Bianchelli on 2024-06-08.
 //
@@ -33,4 +33,3 @@ extension ItemProtocol {
         sellIn < 0
     }
 }
-
