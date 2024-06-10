@@ -16,20 +16,16 @@ class NormalItem: ItemProtocol, Updatable {
         static let notExpiredReductionRange = 1
     }
 
+    var name: String
+    var sellIn: Int
+    var quality: Int
+
     init(name: String, sellIn: Int, quality: Int) {
         self.name = name
         self.sellIn = sellIn
         self.quality = quality.qualityBoundsChecked
     }
-
-    var name: String
-    var sellIn: Int
-    var quality: Int {
-        didSet {
-            quality = quality.qualityBoundsChecked
-        }
-    }
-
+    
     private var reductionRange: Int {
         isExpired ? NormalItem.Const.expiredReductionRange : NormalItem.Const.notExpiredReductionRange
     }

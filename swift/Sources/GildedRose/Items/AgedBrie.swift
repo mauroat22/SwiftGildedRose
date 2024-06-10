@@ -11,18 +11,14 @@ import Foundation
 ///
 class AgedBrie: ItemProtocol, Updatable {
 
+    var name: String
+    var sellIn: Int
+    var quality: Int
+
     init(name: String, sellIn: Int, quality: Int) {
         self.name = name
         self.sellIn = sellIn
         self.quality = quality.qualityBoundsChecked
-    }
-
-    var name: String
-    var sellIn: Int
-    var quality: Int {
-        didSet {
-            quality = quality.qualityBoundsChecked
-        }
     }
 
     func update() {

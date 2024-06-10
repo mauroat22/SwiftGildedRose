@@ -15,17 +15,14 @@ class Sulfuras: ItemProtocol {
         static let constantQuality = 80
     }
 
-    init(name: String, sellIn: Int, quality: Int) {
-        self.name = name
-        self.sellIn = sellIn
-        self.quality = Sulfuras.Const.constantQuality
-    }
-    
     var name: String
     var sellIn: Int
     var quality: Int {
-        didSet {
-            quality = Sulfuras.Const.constantQuality
-        }
+        Sulfuras.Const.constantQuality
+    }
+    
+    init(name: String, sellIn: Int) {
+        self.name = name
+        self.sellIn = sellIn
     }
 }

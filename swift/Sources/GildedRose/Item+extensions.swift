@@ -10,9 +10,9 @@ import Foundation
 /// Use this protocol to conform the properties of an `Item`.
 ///
 public protocol ItemProtocol {
-    var name: String { get set }
-    var sellIn: Int { get set }
-    var quality: Int { get set }
+    var name: String { get }
+    var sellIn: Int { get }
+    var quality: Int { get }
 }
 
 extension Item: ItemProtocol { }

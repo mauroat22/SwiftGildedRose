@@ -43,23 +43,9 @@ class QualityBoundsTests: XCTestCase {
         }
     }
 
-    func testCreateItem_QualityLessThanZero() {
-        for index in itemsLessThanZero.indices {
-            itemsLessThanZero[index].quality = 63
-            XCTAssertEqual(itemsLessThanZero[index].quality, 50)
-        }
-    }
-
     func testCreateItem_QualityMoreThanFiftyInit() {
         itemsMoreThanFifty.forEach { item in
             XCTAssertEqual(item.quality, 50)
-        }
-    }
-
-    func testCreateItem_QualityMoreThanFifty() {
-        for index in itemsMoreThanFifty.indices {
-            itemsMoreThanFifty[index].quality = 63
-            XCTAssertEqual(itemsMoreThanFifty[index].quality, 50)
         }
     }
 }

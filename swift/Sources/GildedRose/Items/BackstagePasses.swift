@@ -22,20 +22,16 @@ class BackstagePasses: ItemProtocol, Updatable {
         static let zero = 0
     }
 
+    var name: String
+    var sellIn: Int
+    var quality: Int
+
     init(name: String, sellIn: Int, quality: Int) {
         self.name = name
         self.sellIn = sellIn
         self.quality = quality.qualityBoundsChecked
     }
-
-    var name: String
-    var sellIn: Int
-    var quality: Int {
-        didSet {
-            quality = quality.qualityBoundsChecked
-        }
-    }
-
+    
     private var additionRange: Int {
         if sellIn <= BackstagePasses.Const.minDaysToSell {
             return BackstagePasses.Const.maxAdditionRange

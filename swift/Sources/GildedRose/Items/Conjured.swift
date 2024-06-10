@@ -16,18 +16,14 @@ class Conjured: ItemProtocol, Updatable {
         static let notExpiredReductionRange = 2
     }
 
+    var name: String
+    var sellIn: Int
+    var quality: Int
+
     init(name: String, sellIn: Int, quality: Int) {
         self.name = name
         self.sellIn = sellIn
         self.quality = quality.qualityBoundsChecked
-    }
-
-    var name: String
-    var sellIn: Int
-    var quality: Int {
-        didSet {
-            quality = quality.qualityBoundsChecked
-        }
     }
 
     private var reductionRange: Int {
