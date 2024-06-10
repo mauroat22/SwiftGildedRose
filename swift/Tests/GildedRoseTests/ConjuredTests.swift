@@ -12,9 +12,9 @@ class ConjuredTests: XCTestCase {
 
     func testUpdateQuality_Conjured_decreaseQuality() {
         let item = Conjured(name: "Conjured", sellIn: 2, quality: 2)
-        let sut = GildedRose(items: [item])
+        let sut = GildedRose(items: [item], commandLineProvider: CommandLineProviderOneDayMock())
 
-        sut.updateQuality()
+        _ = try? sut.updateQualityAndReport()
 
         XCTAssertEqual(item.sellIn, 1)
         XCTAssertEqual(item.quality, 0)
@@ -22,9 +22,9 @@ class ConjuredTests: XCTestCase {
 
     func testUpdateQuality_Conjured_decreaseQualitySellInPassed() {
         let item = Conjured(name: "Conjured", sellIn: 0, quality: 50)
-        let sut = GildedRose(items: [item])
+        let sut = GildedRose(items: [item], commandLineProvider: CommandLineProviderOneDayMock())
 
-        sut.updateQuality()
+        _ = try? sut.updateQualityAndReport()
 
         XCTAssertEqual(item.sellIn, -1)
         XCTAssertEqual(item.quality, 46)
@@ -32,9 +32,9 @@ class ConjuredTests: XCTestCase {
 
     func testUpdateQuality_Conjured_decreaseQualitySellInPassed_QualityLessThanFour() {
         let item = Conjured(name: "Conjured", sellIn: -1, quality: 3)
-        let sut = GildedRose(items: [item])
+        let sut = GildedRose(items: [item], commandLineProvider: CommandLineProviderOneDayMock())
 
-        sut.updateQuality()
+        _ = try? sut.updateQualityAndReport()
 
         XCTAssertEqual(item.sellIn, -2)
         XCTAssertEqual(item.quality, 0)
@@ -42,9 +42,9 @@ class ConjuredTests: XCTestCase {
 
     func testUpdateQuality_Conjured_decreaseQuality_QualityLessThanTwo() {
         let item = Conjured(name: "Conjured", sellIn: 1, quality: 1)
-        let sut = GildedRose(items: [item])
+        let sut = GildedRose(items: [item], commandLineProvider: CommandLineProviderOneDayMock())
 
-        sut.updateQuality()
+        _ = try? sut.updateQualityAndReport()
 
         XCTAssertEqual(item.sellIn, 0)
         XCTAssertEqual(item.quality, 0)

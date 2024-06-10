@@ -12,9 +12,9 @@ class AgedBrieTests: XCTestCase {
 
     func testUpdateQuality_AgedBrie_IncreaseQuality() {
         let item = AgedBrie(name: "Aged Brie", sellIn: 2, quality: 2)
-        let sut = GildedRose(items: [item])
+        let sut = GildedRose(items: [item], commandLineProvider: CommandLineProviderOneDayMock())
 
-        sut.updateQuality()
+        _ = try? sut.updateQualityAndReport()
 
         XCTAssertEqual(item.sellIn, 1)
         XCTAssertEqual(item.quality, 3)
@@ -22,9 +22,9 @@ class AgedBrieTests: XCTestCase {
 
     func testUpdateQuality_AgedBrie_QualityEqualFifty() {
         let item = AgedBrie(name: "Aged Brie", sellIn: 0, quality: 50)
-        let sut = GildedRose(items: [item])
+        let sut = GildedRose(items: [item], commandLineProvider: CommandLineProviderOneDayMock())
 
-        sut.updateQuality()
+        _ = try? sut.updateQualityAndReport()
 
         XCTAssertEqual(item.sellIn, -1)
         XCTAssertEqual(item.quality, 50)

@@ -15,9 +15,6 @@ public protocol ItemProtocol {
     var quality: Int { get }
 }
 
-//TODO: May be possible to remove. 
-extension Item: ItemProtocol { }
-
 extension ItemProtocol {
     // According to the AC: "The Quality of an item is never negative" and "is never more than 50"
     var canReduceQuality: Bool {
