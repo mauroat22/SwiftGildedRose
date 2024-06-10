@@ -9,7 +9,7 @@ import Foundation
 
 /// An `Item` that increases in quality as it `sellIn` approaches..
 ///
-class BackstagePasses: ItemProtocol, Updatable {
+class BackstagePasses: UpdatableItem {
 
     struct Const {
         static let maxDaysToSell = 10
@@ -20,16 +20,6 @@ class BackstagePasses: ItemProtocol, Updatable {
         static let minAdditionRange = 1
 
         static let zero = 0
-    }
-
-    var name: String
-    var sellIn: Int
-    var quality: Int
-
-    init(name: String, sellIn: Int, quality: Int) {
-        self.name = name
-        self.sellIn = sellIn
-        self.quality = quality.qualityBoundsChecked
     }
     
     private var additionRange: Int {
@@ -44,8 +34,8 @@ class BackstagePasses: ItemProtocol, Updatable {
         }
     }
 
-    func update() {
-        sellIn -= 1
+    override func update() {
+        super.update()
         for _ in 1...additionRange {
             guard canIncreaseQuality else { break }
             quality += 1
