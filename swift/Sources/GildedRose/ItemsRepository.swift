@@ -7,16 +7,14 @@
 
 import Foundation
 
-public protocol ItemsRepositoryProtocol: AnyObject {
-    var items: [ItemProtocol] { get }
+public protocol ItemsRepositoryProviding: AnyObject {
+    var items: [Itemable] { get }
 }
 
-public class ItemsRepository: ItemsRepositoryProtocol {
-    public init() {
-
-    }
+public class ItemsRepository: ItemsRepositoryProviding {
+    public init() { }
     
-    public let items: [ItemProtocol] = [
+    public let items: [Itemable] = [
         NormalItem(name: "+5 Dexterity Vest", sellIn: 10, quality: 20),
         AgedBrie(name: "Aged Brie", sellIn: 2, quality: 0),
         NormalItem(name: "Elixir of the Mongoose", sellIn: 5, quality: 7),

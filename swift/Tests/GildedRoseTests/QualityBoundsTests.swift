@@ -10,8 +10,8 @@ import XCTest
 
 class QualityBoundsTests: XCTestCase {
 
-    var itemsMoreThanFifty: [ItemProtocol]!
-    var itemsLessThanZero: [ItemProtocol]!
+    var itemsMoreThanFifty: [Itemable]!
+    var itemsLessThanZero: [Itemable]!
 
     override func setUp() {
         super.setUp()

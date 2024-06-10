@@ -12,7 +12,7 @@ import XCTest
 class GildedRoseTests: XCTestCase {
 
     var itemsRepositoryMock: ItemsRepositoryMock!
-    var sut: GildedRoseProtocol!
+    var sut: GildedRoseUpdating!
 
     override func setUp() {
         super.setUp()

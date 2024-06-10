@@ -1,17 +1,17 @@
-public protocol GildedRoseProtocol: AnyObject {
-    var items: [ItemProtocol] { get }
+public protocol GildedRoseUpdating: AnyObject {
+    var items: [Itemable] { get }
     func updateQualityAndReport() throws -> String
 }
 
-public class GildedRose: GildedRoseProtocol {
+public class GildedRose: GildedRoseUpdating {
     enum NoItemsError: Error {
         case noItems
     }
 
-    public var items: [ItemProtocol]
-    private var commandLineProvider: CommandLineProviderProtocol
+    public var items: [Itemable]
+    private var commandLineProvider: CommandLineProviding
 
-    public init(items: [ItemProtocol], commandLineProvider: CommandLineProviderProtocol) {
+    public init(items: [Itemable], commandLineProvider: CommandLineProviding) {
         self.items = items
         self.commandLineProvider = commandLineProvider
     }

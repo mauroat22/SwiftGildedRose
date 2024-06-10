@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol CommandLineProviderProtocol {
+public protocol CommandLineProviding {
     func getDaysParameter() throws -> Int
 }
 
@@ -15,7 +15,7 @@ public enum ParamError: Error {
     case parameterNotSupported
 }
 
-public class CommandLineProvider: CommandLineProviderProtocol {
+public class CommandLineProvider: CommandLineProviding {
     struct Const {
         static let defaultValue = 2
     }
