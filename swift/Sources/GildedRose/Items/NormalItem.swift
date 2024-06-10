@@ -9,7 +9,7 @@ import Foundation
 
 /// An `Item` that decreases its quality twice as fast, if the sell by date has passed.
 ///
-class NormalItem: UpdatableItem {
+public class NormalItem: UpdatableItem {
 
     struct Const {
         static let expiredReductionRange = Self.notExpiredReductionRange * 2

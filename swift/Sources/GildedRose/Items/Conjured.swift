@@ -9,7 +9,7 @@ import Foundation
 
 /// An `Item`  that decreases its quality twice as fast as a normal item.
 ///
-class Conjured: UpdatableItem {
+public class Conjured: UpdatableItem {
 
     struct Const {
         static let expiredReductionRange = Self.notExpiredReductionRange * 2

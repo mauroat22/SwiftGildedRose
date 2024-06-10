@@ -9,7 +9,7 @@ import Foundation
 
 /// An `Item` that increases in quality as it `sellIn` approaches..
 ///
-class BackstagePasses: UpdatableItem {
+public class BackstagePasses: UpdatableItem {
 
     struct Const {
         static let maxDaysToSell = 6...10

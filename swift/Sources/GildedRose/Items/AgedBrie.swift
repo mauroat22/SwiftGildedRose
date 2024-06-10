@@ -9,7 +9,7 @@ import Foundation
 
 /// An `Item` that increases in quality as it `sellIn` approaches.
 ///
-class AgedBrie: UpdatableItem {
+public class AgedBrie: UpdatableItem {
 
     override func update() {
         super.update()

@@ -16,7 +16,7 @@ public class UpdatableItem: ItemProtocol, Updatable {
         }
     }
 
-    init(name: String, sellIn: Int, quality: Int) {
+    public init(name: String, sellIn: Int, quality: Int) {
         self.name = name
         self.sellIn = sellIn
         self.quality = quality.qualityBoundsChecker
