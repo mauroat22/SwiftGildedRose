@@ -25,12 +25,12 @@ class NormalItemTests: XCTestCase {
     }
 
     func testUpdateQuality_NormalItem_SellInDatePassed() {
-        let item = NormalItem(name: "Normal Item", sellIn: -1, quality: 11)
+        let item = NormalItem(name: "Normal Item", sellIn: 0, quality: 11)
         let sut = GildedRose(items: [item])
 
         sut.updateQuality()
 
-        XCTAssertEqual(item.sellIn, -2)
+        XCTAssertEqual(item.sellIn, -1)
         XCTAssertEqual(item.quality, 9)
     }
 

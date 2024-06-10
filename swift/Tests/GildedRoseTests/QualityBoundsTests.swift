@@ -48,5 +48,19 @@ class QualityBoundsTests: XCTestCase {
             XCTAssertEqual(item.quality, 50)
         }
     }
+
+    func testCreateItem_QualityMoreThanFiftySet() {
+        let item = UpdatableItem(name: "aged brie", sellIn: 30, quality: 20)
+        item.quality = 55
+
+        XCTAssertEqual(item.quality, 50)
+    }
+
+    func testCreateItem_QualityLessThanFiftySet() {
+        let item = UpdatableItem(name: "aged brie", sellIn: 30, quality: 20)
+        item.quality = -1
+
+        XCTAssertEqual(item.quality, 0)
+    }
 }
 

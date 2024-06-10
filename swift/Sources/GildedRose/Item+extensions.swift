@@ -15,6 +15,7 @@ public protocol ItemProtocol {
     var quality: Int { get }
 }
 
+//TODO: May be possible to remove. 
 extension Item: ItemProtocol { }
 
 extension ItemProtocol {

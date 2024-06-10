@@ -12,23 +12,23 @@ import Foundation
 class BackstagePasses: UpdatableItem {
 
     struct Const {
-        static let maxDaysToSell = 10
-        static let minDaysToSell = 5
+        static let maxDaysToSell = 6...10
+        static let minDaysToSell = 0...5
 
         static let maxAdditionRange = 3
         static let mediumAdditionRange = 2
         static let minAdditionRange = 1
-
-        static let zero = 0
     }
-    
+
     private var additionRange: Int {
-        if sellIn <= BackstagePasses.Const.minDaysToSell {
+        if BackstagePasses.Const.minDaysToSell.contains(sellIn) {
             return BackstagePasses.Const.maxAdditionRange
-        } else if sellIn <= BackstagePasses.Const.maxDaysToSell {
+        }
+        if BackstagePasses.Const.maxDaysToSell.contains(sellIn) {
             return BackstagePasses.Const.mediumAdditionRange
-        } else if sellIn <= BackstagePasses.Const.zero {
-            return BackstagePasses.Const.zero
+        }
+        if sellIn < .zero {
+            return .zero
         } else {
             return BackstagePasses.Const.minAdditionRange
         }
@@ -36,9 +36,14 @@ class BackstagePasses: UpdatableItem {
 
     override func update() {
         super.update()
-        for _ in 1...additionRange {
-            guard canIncreaseQuality else { break }
-            quality += 1
+        if additionRange == .zero {
+            quality = 0 
+        } else {
+            for _ in 1...additionRange {
+                guard canIncreaseQuality else { break }
+                quality += 1
+            }
         }
+
     }
 }

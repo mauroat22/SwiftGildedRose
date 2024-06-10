@@ -9,7 +9,7 @@ import Foundation
 
 /// This is not the best solution, but since the `Item` class cant be modified (for example to use a range instead of an integer) it is a workaround.
 public extension Int {
-    var qualityBoundsChecked: Self {
+    var qualityBoundsChecker: Self {
         if self >= 50 {
             return 50
         }
