@@ -1,8 +1,3 @@
-public protocol GildedRoseUpdating: AnyObject {
-    var items: [Itemable] { get }
-    func updateQualityAndReport() throws -> String
-}
-
 public class GildedRose: GildedRoseUpdating {
     enum NoItemsError: Error {
         case noItems

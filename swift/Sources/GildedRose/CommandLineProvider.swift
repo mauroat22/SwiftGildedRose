@@ -7,10 +7,6 @@
 
 import Foundation
 
-public protocol CommandLineProviding {
-    func getDaysParameter() throws -> Int
-}
-
 public enum ParamError: Error {
     case parameterNotSupported
 }

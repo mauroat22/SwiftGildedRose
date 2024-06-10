@@ -1,5 +1,5 @@
 //
-//  Int+Quality.swift
+//  Int+quality.swift
 //
 //
 //  Created by Mauro Bianchelli on 2024-06-09.

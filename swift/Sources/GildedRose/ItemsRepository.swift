@@ -7,10 +7,6 @@
 
 import Foundation
 
-public protocol ItemsRepositoryProviding: AnyObject {
-    var items: [Itemable] { get }
-}
-
 public class ItemsRepository: ItemsRepositoryProviding {
     public init() { }
     
