@@ -1,5 +1,5 @@
 public class GildedRose {
-    var items: [ItemProtocol]
+    private var items: [ItemProtocol]
 
     public init(items: [ItemProtocol]) {
         self.items = items

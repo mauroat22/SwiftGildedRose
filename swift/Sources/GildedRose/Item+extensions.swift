@@ -1,6 +1,6 @@
 //
 //  Item+extensions.swift
-//  
+//
 //
 //  Created by Mauro Bianchelli on 2024-06-08.
 //
@@ -10,11 +10,12 @@ import Foundation
 /// Use this protocol to conform the properties of an `Item`.
 ///
 public protocol ItemProtocol {
-    var name: String { get set }
-    var sellIn: Int { get set }
-    var quality: Int { get set }
+    var name: String { get }
+    var sellIn: Int { get }
+    var quality: Int { get }
 }
 
+//TODO: May be possible to remove. 
 extension Item: ItemProtocol { }
 
 extension ItemProtocol {
@@ -33,4 +34,3 @@ extension ItemProtocol {
         sellIn < 0
     }
 }
-
