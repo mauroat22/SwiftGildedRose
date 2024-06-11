@@ -17,8 +17,8 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build
-      working-directory: /
+      working-directory: ./swift
       run: swift build -v
     - name: Run tests
-      working-directory: swift_gilded_rose/swift
+      working-directory: ./swift
       run: swift test -v
