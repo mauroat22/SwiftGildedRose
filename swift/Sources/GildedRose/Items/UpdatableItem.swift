@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class UpdatableItem: ItemProtocol, Updatable {
+public class UpdatableItem: Itemable, Updatable {
     public var name: String
     public var sellIn: Int
     public var quality: Int {

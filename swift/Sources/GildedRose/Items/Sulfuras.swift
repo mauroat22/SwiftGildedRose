@@ -9,7 +9,7 @@ import Foundation
 
 /// Legendary `Item`, never modifies its `sellIn` nor its `quality`, which must be always "80"
 ///
-public class Sulfuras: ItemProtocol {
+public class Sulfuras: Itemable {
 
     struct Const {
         static let constantQuality = 80
