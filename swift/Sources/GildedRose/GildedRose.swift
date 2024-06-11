@@ -23,13 +23,15 @@ public class GildedRose: GildedRoseUpdating {
                 for item in items {
                     report +=
                             """
+                        \n
                           NAME: \(item.name)
                           DAYS LEFT: \(item.sellIn)
                           QUALITY: \(item.quality)
                           ________________________
                         """
-                    guard let updatableItem = item as? Updatable else { break }
-                    updatableItem.update()
+                    if let updatableItem = item as? Updatable {
+                        updatableItem.update()
+                    }
                 }
 
             }

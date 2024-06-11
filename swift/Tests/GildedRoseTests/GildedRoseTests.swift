@@ -31,7 +31,19 @@ class GildedRoseTests: XCTestCase {
         XCTAssertEqual(
             result,
             """
-            \n\n-------- day 0 --------\n\n  NAME: +5 Dexterity Vest\n  DAYS LEFT: 10\n  QUALITY: 20\n  ________________________\n\n-------- day 1 --------\n\n  NAME: +5 Dexterity Vest\n  DAYS LEFT: 9\n  QUALITY: 19\n  ________________________
+            \n\n-------- day 0 --------\n\n
+
+              NAME: +5 Dexterity Vest
+              DAYS LEFT: 10
+              QUALITY: 20
+              ________________________
+
+            -------- day 1 --------\n\n
+
+              NAME: +5 Dexterity Vest
+              DAYS LEFT: 9
+              QUALITY: 19
+              ________________________
             """
         )
     }
@@ -42,7 +54,12 @@ class GildedRoseTests: XCTestCase {
         XCTAssertEqual(
             result,
             """
-            \n\n-------- day 0 --------\n\n  NAME: +5 Dexterity Vest\n  DAYS LEFT: 10\n  QUALITY: 20\n  ________________________
+            \n\n-------- day 0 --------\n\n
+
+              NAME: +5 Dexterity Vest
+              DAYS LEFT: 10
+              QUALITY: 20
+              ________________________
             """
         )
     }
@@ -51,4 +68,20 @@ class GildedRoseTests: XCTestCase {
         let sut = GildedRose(items: [], commandLineProvider: CommandLineProviderErrorMock())
         XCTAssertThrowsError(try sut.updateQualityAndReport())
     }
+
+    func testUpdateAndReport_CheckDayIsReported() {
+        sut = GildedRose(items: itemsRepositoryMock.items, commandLineProvider: CommandLineProviderOneDayMock())
+        let result = try! sut.updateQualityAndReport()
+        let dayToCheck = try! CommandLineProviderOneDayMock().getDaysParameter() - 1
+        XCTAssert(result.contains("-------- day \(dayToCheck) --------"))
+    }
+
+    func testUpdateAndReport_CheckAllItemsAreReported() {
+        sut = GildedRose(items: itemsRepositoryMock.items, commandLineProvider: CommandLineProviderOneDayMock())
+        let result = try! sut.updateQualityAndReport()
+        itemsRepositoryMock.items.forEach { item in
+            XCTAssert(result.contains(item.name))
+        }
+    }
+
 }
