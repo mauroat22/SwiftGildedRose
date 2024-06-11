@@ -20,5 +20,5 @@ jobs:
       working-directory: /
       run: swift build -v
     - name: Run tests
-      working-directory: ./swift
+      working-directory: swift_gilded_rose/swift
       run: swift test -v
