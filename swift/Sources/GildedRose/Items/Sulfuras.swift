@@ -12,12 +12,12 @@ import Foundation
 public class Sulfuras: Itemable {
 
     struct Const {
-        static let constantQuality = 80
+        static let constantQuality: UInt8 = 80
     }
 
     public var name: String
     public var sellIn: Int
-    public var quality: Int {
+    public var quality: UInt8 {
         Sulfuras.Const.constantQuality
     }
     

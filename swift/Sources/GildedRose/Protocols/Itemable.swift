@@ -12,5 +12,5 @@ import Foundation
 public protocol Itemable {
     var name: String { get }
     var sellIn: Int { get }
-    var quality: Int { get }
+    var quality: UInt8 { get }
 }

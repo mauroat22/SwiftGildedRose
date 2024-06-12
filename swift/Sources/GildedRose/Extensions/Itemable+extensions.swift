@@ -10,12 +10,12 @@ import Foundation
 extension Itemable {
     // According to the AC: "The Quality of an item is never negative" and "is never more than 50"
     var canReduceQuality: Bool {
-        let reductableRange: ClosedRange<Int> = 1...50
+        let reductableRange: ClosedRange<UInt8> = 1...50
         return  reductableRange.contains(quality)
     }
 
     var canIncreaseQuality: Bool {
-        let sumRange: ClosedRange<Int> = 0...49
+        let sumRange: ClosedRange<UInt8> = 0...49
         return  sumRange.contains(quality)
     }
 
