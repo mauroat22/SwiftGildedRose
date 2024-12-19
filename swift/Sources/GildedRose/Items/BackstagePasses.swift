@@ -12,6 +12,7 @@ import Foundation
 public class BackstagePasses: UpdatableItem {
 
     struct Const {
+        static let maxQuality = 50
         static let maxDaysToSell = 6...10
         static let minDaysToSell = 0...5
 
@@ -36,14 +37,13 @@ public class BackstagePasses: UpdatableItem {
 
     override func update() {
         super.update()
-        if additionRange == .zero {
-            quality = 0 
-        } else {
-            for _ in 1...additionRange {
-                guard canIncreaseQuality else { break }
-                quality += 1
-            }
+
+        guard additionRange != .zero else {
+            quality = 0
+            return
         }
 
+        let increments = min(additionRange, Const.maxQuality - quality)
+        quality += increments
     }
 }
